@@ -36,10 +36,20 @@ router.post('/', async (req, res) => {
 
 router.put('/:id', (req, res) => {
   // update a tag's name by its `id` value
+ Tag.update(req.body, {
+  where: {
+    id: req.params.id,
+  },
+ });
 });
 
 router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
+  Tag.delete(req.body, {
+    where: {
+      id: req.params.id, 
+    }
+  })
 });
 
 module.exports = router;
