@@ -7,7 +7,7 @@ router.get('/', async (req, res) => {
   // find all tags
   // be sure to include its associated Product data
   try {
-    const tags = await Tag.findAll({ include: [{ model: Product, as: 'tags',
+    const tags = await Tag.findAll({ include: [{ model: Product, through: ProductTag,
     },
   ],
  });
@@ -50,13 +50,18 @@ router.put('/:id', (req, res) => {
  });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id',async (req, res) => {
   // delete on tag by its `id` value
-  Tag.destroy(req.body, {
-    where: {
-      id: req.params.id, 
-    }
-  })
+  try { 
+    const deleteTag = await Tag.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+    res.status(200).json(deleteTag)
+  } catch (err){
+    res.status(500).json({message: 'Could not delete requested Tag!'})
+  }
 });
 
 module.exports = router;
