@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     })
     res.json(categories)
   } catch (err) {
-    res.status(500).json({message: 'Could not find Catergories!'})
+    res.status(500).json({ message: 'Could not find Catergories!'})
   }
 });
 
@@ -22,7 +22,7 @@ router.get('/:id', async (req, res) => {
     const categoriesId = await Category.findByPk(req.params.id, {include: [{model: Product}]})
     res.status(200).json(categoriesId); 
   } catch (err) {
-    res.status(500).json({message: 'There is a ERROR finding your categoryID!'});
+    res.status(500).json({ message: 'There is a ERROR finding your categoryID!'});
   }
 });
 
@@ -32,7 +32,7 @@ router.post('/', async (req, res) => {
     const newCategory = await Category.create(req.body);
     res.status(200).json(newCategory);
   }  catch (err) {
-    res.status(500).json({message: 'There a ERROR creating a new Category!'});
+    res.status(500).json({ message: 'There a ERROR creating a new Category!' });
   }
 });
 
@@ -57,7 +57,7 @@ router.delete('/:id', async (req, res) => {
     })
     res.status(200).json(deleteCategory)
   } catch (err) {
-    res.status(500).json({message: 'Could not delete requested Category!'})
+    res.status(500).json({ message: 'Could not delete requested Category!' })
   }
 });
 

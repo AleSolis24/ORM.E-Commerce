@@ -8,10 +8,10 @@ router.get('/', async (req, res) => {
   // find all products
   // be sure to include its associated Category and Tag data
  try {
-  const products = await Product.findAll({ include: [{model: Category}, {model: Tag}]})
-  res.status(200).json(products)
+  const allProduct = await Product.findAll({ include: [{model: Category}, {model: Tag}]})
+  res.status(200).json(allProduct)
  } catch (err) {
-  res.status(500).json({message: 'Could not find Products!'})
+  res.status(500).json({ message: 'Could not find Products!' })
  }
 });
 
@@ -27,7 +27,7 @@ router.get('/:id', async (req, res) => {
     });
       res.status(200).json(productId)
   } catch (err) {
-    res.status(500).json({message: 'There is a ERROR finding your ProductID!'});
+    res.status(500).json({ message: 'There is a ERROR finding your ProductID!' });
   }
 });
 
@@ -51,6 +51,7 @@ router.post('/', (req, res) => {
             tag_id,
           };
         });
+        console.log(product);
         return ProductTag.bulkCreate(productTagIdArr);
       }
       // if no product tags, just respond
@@ -118,7 +119,7 @@ router.delete('/:id', async (req, res) => {
   })
   res.status(200).json(deletProduct)
  } catch (err) {
-  res.status(500).json({message: 'Could not delete product!'})
+  res.status(500).json({ message: 'Could not delete product!' })
  }
 });
 

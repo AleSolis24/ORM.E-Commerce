@@ -1,0 +1,10 @@
+{
+  "id": 15,
+  "product_name": "games",
+  "price": 20,
+  "stock": 10,
+  "category_id": null,
+  "categoryId": null,
+  "category": null,
+  "tags": []
+}

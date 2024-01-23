@@ -27,7 +27,7 @@ router.get('/:id', async (req, res) => {
 })
     res.json(tagId)
   } catch (err) {
-    res.status(500).json({message: 'There a ERROR with finding your Tag!'});
+    res.status(500).json({ message: 'There a ERROR with finding your Tag!' });
   }
 });
 
@@ -37,7 +37,7 @@ router.post('/', async (req, res) => {
     const newTag = await Tag.create(req.body);
     res.status(200).json(newTag);
   } catch {
-    res.status(500).json({message: 'There is a ERROR with creating a new TAG!'})
+    res.status(500).json({ message: 'There is a ERROR with creating a new TAG!' })
   }
 });
 
@@ -60,7 +60,7 @@ router.delete('/:id',async (req, res) => {
     })
     res.status(200).json(deleteTag)
   } catch (err){
-    res.status(500).json({message: 'Could not delete requested Tag!'})
+    res.status(500).json({ message: 'Could not delete requested Tag!' })
   }
 });
 

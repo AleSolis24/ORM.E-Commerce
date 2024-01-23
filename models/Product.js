@@ -26,7 +26,6 @@ Product.init(
       allowNull: false,
       validate: {
         isDecimal: true,
-        message: "Please enter a number!"
       },
     },
 
@@ -36,7 +35,6 @@ Product.init(
       defaultValue: 10,
       validate: {
         isNumeric: true,
-        message: "Please enter a number!"
       },
     },
 
@@ -44,10 +42,11 @@ Product.init(
       type: DataTypes.INTEGER,
       references: {
         model: 'category',
-        key: 'id',
+        id: 'key'
       },
     },
   },
+
   {
     sequelize,
     timestamps: false,
