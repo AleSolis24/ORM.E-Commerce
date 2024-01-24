@@ -50,6 +50,7 @@ router.post('/', (req, res) => {
             product_id: product.id,
             tag_id,
           };
+          
         });
         console.log(product);
         return ProductTag.bulkCreate(productTagIdArr);
